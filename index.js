@@ -15,10 +15,16 @@ app.get('/', function (req, res) {
     res.send({ qStatus: "successful" })
 });
 
-app.post('/', function (req, res) {
+app.post('/signup', function (req, res) {
     console.log(req.body)
-    res.send({ qStatus: "successful" })
-})
+    res.send({ qStatus: "successful", body: req.body, params: req.params });
+});
+
+app.post('/signin', function (req, res) {
+    console.log(req.body)
+    let s = parseInt(Math.random() * 100000000);
+    res.send({ qStatus: "successful", token: 'token-' + s });
+});
 
 
 app.listen(PORT, () => {
